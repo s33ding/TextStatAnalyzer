@@ -1,19 +1,27 @@
 import streamlit as st
+from shared_func.pdfplumber_func import *
+from shared_func.text_func import *
 
-#input de números
-input_num = st.number_input(
-       'Escreva um número entre 0 e 10',
-       min_value = 0,
-       max_value = 10,
-       value = 0,
-       step = 1
-)
+def main():
+    st.title("PDF Text Extractor")
 
-st.write('O número inputado foi: ', input_num)
-#input de texto
-input_txt = st.text_input(
-      'Escreva uma palavra com até 5 letras',
-      value = 'juiz',
-      max_chars = 5
-)
-st.write('A palavra inputada foi: ', input_txt)
+    # File uploader for uploading PDF files
+    uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
+
+    if uploaded_file is not None:
+        # Display the uploaded PDF file
+        st.write("Uploaded PDF file:", uploaded_file.name)
+
+        # Extract text from the uploaded PDF file
+        with pdfplumber.open(uploaded_file) as pdf:
+            text = ""
+            for page in pdf.pages:
+                text += page.extract_text()
+
+        # Display the extracted text
+        st.subheader("Extracted Text:")
+        st.write(text)
+        
+
+if __name__ == "__main__":
+    main()
