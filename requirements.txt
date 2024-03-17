@@ -1,3 +1,8 @@
+pandas
+streamlit
+altair
+boto3
 streamlit
 pdfplumber
 pandas
+nltk

@@ -19,9 +19,9 @@ def main():
                 text += page.extract_text()
 
         # Display the extracted text
-        st.subheader("Extracted Text:")
-        st.write(text)
-        
+        st.subheader("Top 20 words:")
+        words = top_20_words(text)
+        st.write(words)
 
 if __name__ == "__main__":
     main()
