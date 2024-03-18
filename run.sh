@@ -1,4 +1,3 @@
 NAME="streamlit"
-IMG="$NAME-img"
-echo "docker run -p 8501:8501 $IMG"
-docker run -p 8501:8501 $IMG -v $(pwd):/home/streamlit
+echo "docker run -it -d -p 8501:8501 -v $(pwd):/app --name $NAME -d --restart unless-stopped $NAME-img"
+docker run -it -d -p 8501:8501 -v $(pwd):/app --name $NAME -d --restart unless-stopped $NAME-img

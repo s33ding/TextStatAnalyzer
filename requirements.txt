@@ -6,3 +6,6 @@ streamlit
 pdfplumber
 pandas
 nltk
+wordcloud
+matplotlib
+plotly
